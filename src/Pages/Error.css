@@ -1,0 +1,225 @@
+/* ─────────────────────────────────────────────────────────────
+   Error.css  —  Animated 404 "Lost at Sea" page
+───────────────────────────────────────────────────────────── */
+
+/* ── Full-page layout ────────────────────────────────────── */
+.error-page {
+  min-height: calc(100vh - 66px);
+  background: linear-gradient(180deg, #e8f4fd 0%, #c2e0f4 50%, #8ec9e8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem 8rem;
+}
+
+/* ── Animated wave background ────────────────────────────── */
+.error-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  pointer-events: none;
+}
+
+.error-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23af9a7d' fill-opacity='1' d='M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,100 L0,100 Z'/%3E%3C/svg%3E")
+    repeat-x;
+  background-size: 50% 100%;
+  animation: waveMove 8s linear infinite;
+  opacity: 0.6;
+}
+
+.error-wave--2 {
+  animation: waveMove 12s linear infinite reverse;
+  opacity: 0.4;
+  bottom: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23c4b08e' fill-opacity='1' d='M0,60 C360,20 720,80 1080,40 C1260,20 1380,60 1440,50 L1440,100 L0,100 Z'/%3E%3C/svg%3E");
+}
+
+.error-wave--3 {
+  animation: waveMove 16s linear infinite;
+  opacity: 0.3;
+  bottom: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23d4c09e' fill-opacity='1' d='M0,30 C180,70 360,10 540,50 C720,90 900,10 1080,50 C1260,90 1380,30 1440,40 L1440,100 L0,100 Z'/%3E%3C/svg%3E");
+}
+
+@keyframes waveMove {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Content container ───────────────────────────────────── */
+.error-content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* ── Buoy illustration (pure CSS) ───────────────────────── */
+.error-buoy {
+  width: 60px;
+  margin: 0 auto 1.5rem;
+  animation: buoyFloat 3s ease-in-out infinite;
+}
+
+@keyframes buoyFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%       { transform: translateY(-14px) rotate(3deg); }
+}
+
+.error-buoy__body {
+  width: 60px;
+  height: 80px;
+  background: #e74c3c;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: inset -6px -6px 12px rgba(0,0,0,0.15);
+}
+
+.error-buoy__stripe {
+  position: absolute;
+  top: 33px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.error-buoy__top {
+  width: 12px;
+  height: 12px;
+  background: #e74c3c;
+  border-radius: 50%;
+  margin: 0 auto;
+  position: relative;
+  top: -4px;
+}
+
+.error-buoy__chain {
+  width: 3px;
+  height: 28px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #777 0px,
+    #777 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+/* ── Giant 404 digits ───────────────────────────────────── */
+.error-code {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(5rem, 18vw, 12rem);
+  font-weight: 700;
+  color: #fff;
+  text-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    0 0 60px rgba(175, 154, 125, 0.4);
+  letter-spacing: -4px;
+  line-height: 1;
+  margin-bottom: 0.3em;
+  display: flex;
+  justify-content: center;
+  gap: 0.05em;
+}
+
+/* Each digit bounces with a staggered delay */
+.error-digit {
+  display: inline-block;
+  animation: digitBounce 2.4s ease-in-out infinite;
+}
+
+.error-digit--1 { animation-delay: 0s; }
+.error-digit--2 { animation-delay: 0.15s; }
+.error-digit--3 { animation-delay: 0.3s; }
+
+@keyframes digitBounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30%            { transform: translateY(-18px); }
+}
+
+/* ── Text content ────────────────────────────────────────── */
+.error-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: #1a3a52;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.error-message {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: #2c5f7a;
+  max-width: 420px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+}
+
+/* ── Action buttons ──────────────────────────────────────── */
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error-btn {
+  font-size: 0.9rem;
+  padding: 0.6rem 1.4rem;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.error-btn:nth-child(1) { animation-delay: 0.3s; }
+.error-btn:nth-child(2) { animation-delay: 0.5s; }
+
+.error-btn--outline {
+  background: transparent;
+  color: var(--primaryColor);
+}
+
+.error-btn--outline:hover {
+  background: var(--primaryColor);
+  color: var(--mainBlack);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive adjustments ──────────────────────────────── */
+@media screen and (max-width: 480px) {
+  .error-page {
+    padding-bottom: 10rem;
+  }
+
+  .error-buoy {
+    width: 48px;
+  }
+
+  .error-buoy__body {
+    width: 48px;
+    height: 64px;
+  }
+}
