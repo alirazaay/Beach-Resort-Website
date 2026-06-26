@@ -107,24 +107,31 @@ export default function RoomFilter({ rooms }) {
 
         {/* size start */}
         <div className="form-group">
-          <label htmlFor="size">room size</label>
+          <label htmlFor="minSize">Room Size (sq ft)</label>
 
           <div className="size-inputs">
+            {/* FIX: Both inputs had id="size" — duplicate IDs are invalid HTML.
+                Screen readers and <label> associations break with duplicate IDs.
+                Each input now has a unique id matching its name. */}
             <input
               type="number"
               name="minSize"
-              id="size"
+              id="minSize"
               value={minSize}
               onChange={handleChange}
               className="size-input"
+              aria-label="Minimum room size in square feet"
+              min="0"
             />
             <input
               type="number"
               name="maxSize"
-              id="size"
+              id="maxSize"
               value={maxSize}
               onChange={handleChange}
               className="size-input"
+              aria-label="Maximum room size in square feet"
+              min="0"
             />
           </div>
         </div>
