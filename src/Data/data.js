@@ -88,7 +88,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-        "description",
+        "Our Single Basic room offers a comfortable, well-appointed retreat for the solo traveller. Enjoy a plush queen-size bed, modern en-suite bathroom, and a private balcony overlooking our lush tropical gardens. Complimentary high-speed Wi-Fi and a flat-screen smart TV ensure you stay connected and entertained throughout your stay.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -145,7 +145,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-        "Description.",
+        "The Single Standard room elevates your beachside experience with upgraded furnishings, a rainfall shower, and a dedicated workspace. Floor-to-ceiling windows invite natural light and frame picturesque ocean or garden views. Ideal for the business traveller or the discerning solo guest who appreciates space and style.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -202,7 +202,7 @@ const data = [
       breakfast: true,
       featured: false,
       description:
-        "description",
+        "Indulge in our Single Deluxe room — a sanctuary of refined luxury for one. A king-size bed dressed in premium Egyptian cotton linens anchors the room, complemented by a marble bathroom with a soaking tub and separate rainfall shower. Your mornings begin with a complimentary gourmet breakfast, and pets are welcome to join the adventure.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -315,7 +315,8 @@ const data = [
       pets: false,
       breakfast: false,
       featured: false,
-      description:"description",
+      description:
+        "The Double Basic room pairs contemporary comfort with beachside charm. Enjoy a king-size bed or twin configuration, a spacious en-suite with premium amenities, and a private terrace with garden views. Thoughtfully designed storage and a well-lit vanity area make it a favourite for couples on extended getaways.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
