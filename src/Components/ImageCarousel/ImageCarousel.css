@@ -1,0 +1,150 @@
+/* ─────────────────────────────────────────────────────────────
+   ImageCarousel.css
+   Styles for the custom image gallery / carousel component
+───────────────────────────────────────────────────────────── */
+
+.carousel {
+  width: 100%;
+  outline: none; /* remove default focus outline (we add focus-visible globally) */
+}
+
+/* ── Main image area ─────────────────────────────────────── */
+.carousel-main {
+  position: relative;
+  width: 100%;
+  /* Fixed aspect ratio: 16:9 — maintains consistent height across all room images */
+  padding-top: 56.25%;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Each slide is absolutely positioned on top of each other */
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* Smooth fade transition between slides */
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
+  display: block;
+}
+
+/* Only the active slide is visible */
+.carousel-slide--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Arrow Buttons ────────────────────────────────────────── */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s ease, transform 0.2s ease;
+  z-index: 2;
+  /* Prevent button from triggering text selection */
+  user-select: none;
+}
+
+.carousel-btn:hover {
+  background: rgba(175, 154, 125, 0.85);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn--prev {
+  left: 12px;
+}
+
+.carousel-btn--next {
+  right: 12px;
+}
+
+/* ── Slide counter ───────────────────────────────────────── */
+.carousel-counter {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 3px 9px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Thumbnail Strip ─────────────────────────────────────── */
+.carousel-thumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  /* Hide scrollbar visually but keep it scrollable */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primaryColor) transparent;
+}
+
+.carousel-thumb {
+  flex-shrink: 0;
+  width: 80px;
+  height: 58px;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  transition: border-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.65;
+}
+
+.carousel-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Active and hover states */
+.carousel-thumb:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+.carousel-thumb--active {
+  border-color: var(--primaryColor);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media screen and (max-width: 576px) {
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
+  }
+
+  .carousel-thumb {
+    width: 60px;
+    height: 44px;
+  }
+}
