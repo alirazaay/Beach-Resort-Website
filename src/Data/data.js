@@ -259,7 +259,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-      "description",
+        "Our Double Economy room is the perfect affordable choice for couples exploring the coast. Two comfortable double beds, a bright en-suite bathroom, and a shared balcony provide everything you need for a relaxing, value-conscious holiday. Located just steps from the beach, this room delivers resort quality at an accessible price point.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -373,7 +373,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-      "description",
+        "Step into our Double Standard room and experience resort living at its finest. A king-size bed with designer bedding, a walk-in rainfall shower, in-room safe, and a minibar stocked with local delicacies await you. Your furry companion is welcome too — pet beds and bowls are provided upon request.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -430,7 +430,7 @@ const data = [
       breakfast: true,
       featured: true,
       description:
-      "description",
+        "Our Double Deluxe room redefines couples luxury. An oceanfront king suite features a private plunge pool terrace, a spa-inspired marble bathroom, and bespoke furnishings crafted by local artisans. Wake to panoramic sea views, enjoy in-room breakfast service, and let our butler attend to your every need. Pets are warmly welcome.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -487,7 +487,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-      "description",
+        "The Family Economy room offers a warm, spacious environment for families of up to three. Two queen beds, a child-safe bathroom, a flat-screen TV, and a generous storage area make it easy for families to spread out and relax. Situated near our kids pool and play area, it is the ideal base for a memorable family holiday.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -544,7 +544,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-      "description",
+        "Designed for larger families, the Family Basic room comfortably accommodates up to four guests. Featuring two queen beds or one king plus bunks, this room includes a spacious bathroom with separate shower and tub, a mini kitchen corner with refrigerator, and direct access to the resort family-friendly pool deck.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -601,7 +601,7 @@ const data = [
       breakfast: false,
       featured: false,
       description:
-      "description",
+        "Our Family Standard suite is a home away from home for families of five. Two bedrooms, a living area, and a kitchenette give families the space and flexibility they need. Premium linens, smart TV in every room, and a large balcony with garden views make this the most popular choice for extended family stays. Pets are warmly welcomed.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -658,7 +658,7 @@ const data = [
       breakfast: true,
       featured: true,
       description:
-      "description",
+        "The Family Deluxe suite is the pinnacle of family luxury — a sprawling multi-bedroom haven for groups of up to six. Private pool access, a fully equipped gourmet kitchen, a cinema room, and personalised butler service create an atmosphere of unrivalled comfort. Complimentary breakfast for all guests and a dedicated family concierge ensure every detail is perfect.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
@@ -715,7 +715,7 @@ const data = [
       breakfast: true,
       featured: true,
       description:
-      "description",
+        "The Presidential Suite is the crown jewel of Beach Resort — an unparalleled experience of grandeur for up to ten guests. Spanning 1,000 sq ft of ocean-view living, the suite features a private terrace with infinity pool, a state-of-the-art entertainment system, a private dining room for twelve, a fully-staffed butler team, and bespoke concierge services available 24 hours a day. Pets welcome. This is not just a room — it is an event.",
        extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
