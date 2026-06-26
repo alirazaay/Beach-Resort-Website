@@ -20,8 +20,11 @@ body {
   padding-top: 66px;
   color: var(--mainBlack);
   background: var(--mainWhite);
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Inter', Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.4;
+}
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', Georgia, serif;
 }
 h1 {
   font-size: 3em;
@@ -522,8 +525,9 @@ h6 {
   padding-bottom: 50px;
   background-color: #222;
 }
+/* FIXED: was `.footer h2, p` which coloured ALL <p> tags white site-wide */
 .footer h2,
-p {
+.footer p {
   color: white;
 }
 .footer a {
@@ -531,11 +535,18 @@ p {
   text-decoration: none;
 }
 .footer a:hover {
-  color: red;
+  color: var(--primaryColor);
   text-decoration: underline;
   transition: var(--mainTransition);
-  -webkit-transition: var(--mainTransition);
-  -moz-transition: var(--mainTransition);
-  -ms-transition: var(--mainTransition);
-  -o-transition: var(--mainTransition);
+}
+/* end of footer */
+
+/* Accessibility: visible focus ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primaryColor);
+  outline-offset: 2px;
 }
