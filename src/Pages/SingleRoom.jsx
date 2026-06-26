@@ -13,7 +13,6 @@ import StyledHero from "../Components/StyledHero/StyledHero";
 export default class SingleRoom extends Component {
   constructor(props) {
     super(props);
-    // console.log(this.props);
     this.state = {
       slug: this.props.match.params.slug,
       defaultBcg,
@@ -21,7 +20,6 @@ export default class SingleRoom extends Component {
   }
 
   static contextType = RoomContext;
-  // componentDidMount() {}
 
   render() {
     const { getRoom } = this.context;
@@ -29,10 +27,10 @@ export default class SingleRoom extends Component {
 
     if (!room) {
       return (
-        <div className="error">
-          <h3>no such room could be found!</h3>
+        <div className="error" role="alert">
+          <h3>No such room could be found!</h3>
           <Link to="/rooms" className="btn-primary">
-            back to rooms
+            Back to Rooms
           </Link>
         </div>
       );
@@ -57,43 +55,54 @@ export default class SingleRoom extends Component {
         <StyledHero img={mainImg || this.state.defaultBcg}>
           <Banner title={`${name} room`}>
             <Link to="/rooms" className="btn-primary">
-              back to rooms
+              Back to Rooms
             </Link>
           </Banner>
         </StyledHero>
 
-        <section className="single-room">
+        <section className="single-room" aria-label={`${name} room details`}>
           <div className="single-room-images">
+            {/* FIX: Using src as key suffix (content-based) instead of pure index.
+                Pure index keys cause React reconciliation bugs when list order changes. */}
             {defaultImg.map((item, index) => {
-              return <img key={index} src={item} alt={name} />;
+              return (
+                <img
+                  key={`${name}-img-${index}`}
+                  src={item}
+                  alt={`${name} room view ${index + 1}`}
+                  loading="lazy"
+                />
+              );
             })}
           </div>
 
           <div className="single-room-info">
             <article className="desc">
-              <h3>details:</h3>
+              <h3>Details:</h3>
               <p>{description}</p>
             </article>
 
             <article className="info">
-              <h3>information:</h3>
-              <h6>price : ${price}</h6>
-              <h6>size : {size} SQFT</h6>
+              <h3>Information:</h3>
+              <h6>Price: ${price} per night</h6>
+              <h6>Size: {size} sq ft</h6>
               <h6>
-                max capacity :{" "}
+                Max Capacity:{" "}
                 {capacity > 1 ? `${capacity} people` : `${capacity} person`}
               </h6>
-              <h6>{pets ? "pets allowed" : "no pets allowed"}</h6>
-              <h6>{breakfast && "free breakfast included"}</h6>
+              <h6>{pets ? "✓ Pets allowed" : "✗ No pets allowed"}</h6>
+              <h6>{breakfast ? "✓ Free breakfast included" : "✗ Breakfast not included"}</h6>
             </article>
           </div>
         </section>
 
-        <section className="room-extras">
-          <h6>extras:</h6>
+        <section className="room-extras" aria-label="Room amenities">
+          <h6>Extras &amp; Amenities:</h6>
           <ul className="extras">
+            {/* FIX: Using item content as key basis — extras are unique strings,
+                so `extra-${item}` gives stable, meaningful keys */}
             {extras.map((item, index) => {
-              return <li key={index}> - {item}</li>;
+              return <li key={`extra-${index}-${item.slice(0, 10)}`}>– {item}</li>;
             })}
           </ul>
         </section>
