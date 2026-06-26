@@ -1,56 +1,106 @@
 // Navbar.jsx
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Logo from "../../assets/img/svg/logo.svg";
-import { FaAlignRight } from "react-icons/fa";
+import { FaAlignRight, FaTimes } from "react-icons/fa";
 
-// FIX: Removed unused `import About` — it was imported but never rendered here.
-// About is correctly used as a Route page in App.js
-
+/**
+ * FEATURE: Active NavLink highlighting
+ * -------------------------------------
+ * Switched from <Link> to <NavLink> (both from react-router-dom).
+ *
+ * NavLink is identical to Link EXCEPT it automatically adds an "active"
+ * CSS class to the anchor when the current URL matches its `to` prop.
+ *
+ * We use `activeClassName="nav-active"` — defined in App.css — to apply
+ * a gold underline and color change to the currently active page link.
+ *
+ * The `exact` prop on the Home link prevents "/" from matching every route
+ * (without exact, "/" matches "/rooms", "/about", etc.).
+ *
+ * FEATURE: Toggle icon changes between ☰ (open) and ✕ (close)
+ * Improves UX by making the nav state visually clear on mobile.
+ */
 export default class Navbar extends Component {
   state = {
     isOpen: false,
   };
 
   handleToggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState((prev) => ({ isOpen: !prev.isOpen }));
+  };
+
+  // Close mobile nav when a link is clicked (UX improvement)
+  handleLinkClick = () => {
+    this.setState({ isOpen: false });
   };
 
   render() {
+    const { isOpen } = this.state;
+
     return (
       <nav className="navbar" role="navigation" aria-label="Main navigation">
         <div className="nav-center">
           <div className="nav-header">
-            <Link to="/" aria-label="Beach Resort - Go to homepage">
+            <NavLink exact to="/" aria-label="Beach Resort — Go to homepage">
               <img src={Logo} alt="Beach Resort logo" />
-            </Link>
+            </NavLink>
             <button
               type="button"
               className="nav-btn"
               onClick={this.handleToggle}
-              aria-expanded={this.state.isOpen}
+              aria-expanded={isOpen}
               aria-controls="nav-menu"
-              aria-label="Toggle navigation menu"
+              aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             >
-              <FaAlignRight className="nav-icon" aria-hidden="true" />
+              {isOpen ? (
+                <FaTimes className="nav-icon" aria-hidden="true" />
+              ) : (
+                <FaAlignRight className="nav-icon" aria-hidden="true" />
+              )}
             </button>
           </div>
 
           <ul
             id="nav-menu"
-            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
+            className={isOpen ? "nav-links show-nav" : "nav-links"}
           >
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                exact
+                to="/"
+                activeClassName="nav-active"
+                onClick={this.handleLinkClick}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/rooms">Rooms</Link>
+              <NavLink
+                to="/rooms"
+                activeClassName="nav-active"
+                onClick={this.handleLinkClick}
+              >
+                Rooms
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="/about"
+                activeClassName="nav-active"
+                onClick={this.handleLinkClick}
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/contact">Contact Us</Link>
+              <NavLink
+                to="/contact"
+                activeClassName="nav-active"
+                onClick={this.handleLinkClick}
+              >
+                Contact Us
+              </NavLink>
             </li>
           </ul>
         </div>
