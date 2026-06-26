@@ -23,10 +23,9 @@ class RoomProvider extends Component {
     pets: false,
   };
 
-  // getDate
+  // Lifecycle: runs once on mount — loads and formats room data into state
   componentDidMount() {
-    // this.getData
-    let rooms = this.formatDate(items);
+    let rooms = this.formatRooms(items);
     let featuredRooms = rooms.filter((room) => room.featured === true);
 
     let maxPrice = Math.max(...rooms.map((item) => item.price));
@@ -43,7 +42,9 @@ class RoomProvider extends Component {
     });
   }
 
-  formatDate(items) {
+  // FIX: Renamed from formatDate → formatRooms (this function never formatted dates;
+  // it flattens the nested Contentful-style data structure into flat room objects)
+  formatRooms(items) {
     let tempItems = items.map((item) => {
       let id = item.sys.id;
       let images = item.fields.images.map((image) => image.fields.file.url);
@@ -61,17 +62,10 @@ class RoomProvider extends Component {
   };
 
   handleChange = (event) => {
-    /* const type = event.target.type;
-    const name = event.target.name;
-    const value = event.target.value; */
-    /* console.log(
-      `this is type: ${type}, this is name: ${name}, this is value: ${value}`
-    ); */
-
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = event.target.name;
-    console.log(target, value, name);
+    // FIX: Removed console.log(target, value, name) — was leaking form input data to console in production
 
     this.setState(
       {
