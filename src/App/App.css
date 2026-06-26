@@ -135,8 +135,15 @@ h6 {
   color: var(--primaryColor);
 }
 
+/* FEATURE: Active NavLink highlight — applied by react-router NavLink when route matches */
+.nav-active {
+  color: var(--primaryColor) !important;
+  border-bottom: 2px solid var(--primaryColor);
+  padding-bottom: 2px;
+}
+
 .show-nav {
-  height: 100px;
+  height: 160px;
 }
 @media screen and (min-width: 768px) {
   .nav-btn {
