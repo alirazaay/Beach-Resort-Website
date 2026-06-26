@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/img/svg/logo.svg";
 import { FaAlignRight } from "react-icons/fa";
 
-// Import your new components
-import About from "../About/About.jsx";
-// import ContactUsComponent from "../path/to/ContactUsComponent";
+// FIX: Removed unused `import About` — it was imported but never rendered here.
+// About is correctly used as a Route page in App.js
 
 export default class Navbar extends Component {
   state = {
@@ -19,22 +18,26 @@ export default class Navbar extends Component {
 
   render() {
     return (
-      <nav className="navbar">
+      <nav className="navbar" role="navigation" aria-label="Main navigation">
         <div className="nav-center">
           <div className="nav-header">
-            <Link to="/">
-              <img src={Logo} alt="Reach Resort" />
+            <Link to="/" aria-label="Beach Resort - Go to homepage">
+              <img src={Logo} alt="Beach Resort logo" />
             </Link>
             <button
               type="button"
               className="nav-btn"
               onClick={this.handleToggle}
+              aria-expanded={this.state.isOpen}
+              aria-controls="nav-menu"
+              aria-label="Toggle navigation menu"
             >
-              <FaAlignRight className="nav-icon" />
+              <FaAlignRight className="nav-icon" aria-hidden="true" />
             </button>
           </div>
 
           <ul
+            id="nav-menu"
             className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
           >
             <li>
@@ -43,7 +46,6 @@ export default class Navbar extends Component {
             <li>
               <Link to="/rooms">Rooms</Link>
             </li>
-            {/* Add About and Contact Us links */}
             <li>
               <Link to="/about">About</Link>
             </li>
