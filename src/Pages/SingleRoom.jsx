@@ -10,6 +10,9 @@ import Banner from "../Components/Banner/Banner";
 import { RoomContext } from "../Context/Context";
 import StyledHero from "../Components/StyledHero/StyledHero";
 
+// FEATURE: Image Carousel — replaces the static horizontal image grid
+import ImageCarousel from "../Components/ImageCarousel/ImageCarousel";
+
 export default class SingleRoom extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +51,7 @@ export default class SingleRoom extends Component {
       images,
     } = room;
 
-    const [mainImg, ...defaultImg] = images;
+    const [mainImg] = images;
 
     return (
       <>
@@ -61,19 +64,11 @@ export default class SingleRoom extends Component {
         </StyledHero>
 
         <section className="single-room" aria-label={`${name} room details`}>
+          {/* FEATURE: ImageCarousel replaces static grid of images.
+              Passes ALL images (including the hero one) so users can browse
+              every photo without having to go back to the hero. */}
           <div className="single-room-images">
-            {/* FIX: Using src as key suffix (content-based) instead of pure index.
-                Pure index keys cause React reconciliation bugs when list order changes. */}
-            {defaultImg.map((item, index) => {
-              return (
-                <img
-                  key={`${name}-img-${index}`}
-                  src={item}
-                  alt={`${name} room view ${index + 1}`}
-                  loading="lazy"
-                />
-              );
-            })}
+            <ImageCarousel images={images} name={name} />
           </div>
 
           <div className="single-room-info">
@@ -91,7 +86,11 @@ export default class SingleRoom extends Component {
                 {capacity > 1 ? `${capacity} people` : `${capacity} person`}
               </h6>
               <h6>{pets ? "✓ Pets allowed" : "✗ No pets allowed"}</h6>
-              <h6>{breakfast ? "✓ Free breakfast included" : "✗ Breakfast not included"}</h6>
+              <h6>
+                {breakfast
+                  ? "✓ Free breakfast included"
+                  : "✗ Breakfast not included"}
+              </h6>
             </article>
           </div>
         </section>
@@ -99,10 +98,10 @@ export default class SingleRoom extends Component {
         <section className="room-extras" aria-label="Room amenities">
           <h6>Extras &amp; Amenities:</h6>
           <ul className="extras">
-            {/* FIX: Using item content as key basis — extras are unique strings,
-                so `extra-${item}` gives stable, meaningful keys */}
             {extras.map((item, index) => {
-              return <li key={`extra-${index}-${item.slice(0, 10)}`}>– {item}</li>;
+              return (
+                <li key={`extra-${index}-${item.slice(0, 10)}`}>– {item}</li>
+              );
             })}
           </ul>
         </section>
